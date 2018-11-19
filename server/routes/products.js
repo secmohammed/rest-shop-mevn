@@ -1,7 +1,6 @@
 const express = require('express')
 const multer = require('multer')
 const auth = require('../middleware/auth')
-const ProductPolicy = require('../policies/ProductPolicy')
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './uploads/')
@@ -29,6 +28,6 @@ const ProductController = require('../controllers/ProductController')
 router.get('/',ProductController.index)
 router.get('/:id',ProductController.show)
 router.post('/',upload.single('productImage'), ProductController.store)
-router.put('/:id',[auth,ProductPolicy.update],ProductController.update)
+router.put('/:id',auth,ProductController.update)
 router.delete('/:id',ProductController.destroy)
 module.exports = router;

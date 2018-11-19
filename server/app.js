@@ -11,9 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(morgan('combined'))
 app.use(express.static('uploads'))
-app.use('/products', require('./routes/products'))
-app.use('/orders', require('./routes/orders'))
-app.use('/auth', require('./routes/users'))
+app.use('/api/products', require('./routes/products'))
+app.use('/api/orders', require('./routes/orders'))
+app.use('/api/auth', require('./routes/users'))
 
 app.use((req, res, next) => {
     const error = new Error('Not Found')
