@@ -1,4 +1,5 @@
 import UserService from './UserService'
+import ProductService from './ProductService'
 export default class ApiService {
 
     constructor ($axios) {
@@ -6,5 +7,8 @@ export default class ApiService {
     }
     user () {
         return new UserService(this.$axios)
+    }
+    product () {
+        return new ProductService(this.$axios)
     }
 }

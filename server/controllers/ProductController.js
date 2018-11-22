@@ -5,9 +5,7 @@ module.exports = {
         try {
             let products = await Product.find()
             if (products.length) {
-                res.send({
-                    products
-                })
+                res.send(products)
             }else {
                 res.status(404).send({
                     message: 'No Entries Found'
@@ -15,14 +13,13 @@ module.exports = {
             }
 
         } catch(e) {
-            // statements
-            console.log(e);
+            next(e)
         }
     },
     async show(req, res, next) {
         try {
             let product = await Product.findById(req.params.id)
-            res.send({ product })
+            res.send({product })
         } catch(e) {
             e.status = 404
             e.message = "Could not find this product"
